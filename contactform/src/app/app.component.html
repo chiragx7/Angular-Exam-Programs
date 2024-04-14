@@ -1,0 +1,41 @@
+<form #templateDrivenForm="ngForm">
+
+
+  <input type="text" [(ngModel)]="formName" placeholder="Enter name" name="name" #name="ngModel" required minlength="5" pattern="[a-zA-Z]+">
+  <div *ngIf="name.invalid && (name.dirty || name.touched)">
+    <div *ngIf="name.errors?.['required']">
+      Name is required
+    </div>
+    <div *ngIf="name.errors?.['minlength']">
+      Name should be 5 characters
+    </div>
+    <div *ngIf="name.errors?.['pattern']">
+      Only alphabets are allowed
+    </div>
+  </div>
+
+  <br><br>
+  <input type="text" [(ngModel)]="formMobile" placeholder="Enter mobile" name="mobile" #phone="ngModel" required minlength="10" pattern="[0-9]+">
+  <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+    <div *ngIf="phone.errors?.['required']">
+      Phone is required
+    </div>
+    <div *ngIf="phone.errors?.['minlength']">
+      Mobile number should be 10 digits 
+    </div>
+    <div *ngIf="phone.errors?.['pattern']">
+      Only digits are allowed
+    </div>
+  </div>
+
+  <br><br>
+  <input type="text" [(ngModel)]="formEmail" placeholder="Enter email" name="email" #email="ngModel" required>
+  <div *ngIf="email.invalid && (email.dirty || email.touched)">
+    <div *ngIf="email.errors?.['required']">
+      Email is required
+    </div>
+  </div>
+
+  <br><br>
+  <button [disabled]="!templateDrivenForm.valid">Submit</button>
+</form>
