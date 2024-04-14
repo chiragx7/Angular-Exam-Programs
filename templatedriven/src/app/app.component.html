@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <form #templateDriven="ngForm">
+
+    <div class="form-group">
+      <input type="text" placeholder="Enter name" [(ngModel)]="formName" #name="ngModel" name="name" class="form-control" required minlength="5">
+    </div>
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+        <div *ngIf="name.errors?.['required']">
+          <p class="text-danger">Name is required</p>
+        </div>
+        <div *ngIf="name.errors?.['minlength']">
+          Name should be 5 characters long
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <input type="password" [(ngModel)]="formPassword" name="password" #password="ngModel" placeholder="Enter password" class="form-control" required minlength="8">
+      </div>
+
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+        <div *ngIf="password.errors?.['required']">
+          Password is required
+        </div>
+        <div *ngIf="password.errors?.['minlength']">
+          Password should be 8 characters long
+        </div>
+      </div>
+
+      <button class="btn btn-success" [disabled]="!templateDriven.valid">Submit</button>
+  </form>
+</div>
