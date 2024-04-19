@@ -1,0 +1,72 @@
+<form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit()">
+
+  <input type="text" name="fname" placeholder="Enter first name" formControlName="firstName">
+  <div *ngIf="myReactiveForm.controls.firstName.invalid && 
+  (myReactiveForm.controls.firstName.dirty || myReactiveForm.controls.firstName.touched)">
+
+    <div *ngIf="myReactiveForm.controls.firstName.errors?.['required']">
+      First Name is required
+    </div>
+    <div *ngIf="myReactiveForm.controls.firstName.errors?.['minlength']">
+      First Name should be atleast 5 characters long
+    </div>
+
+  </div>
+
+  <br><br>
+
+  <input type="text" name="lname" placeholder="Enter last name" formControlName="lastName">
+  <div *ngIf="myReactiveForm.controls.lastName.invalid &&
+  (myReactiveForm.controls.lastName.dirty || myReactiveForm.controls.lastName.touched)">
+
+    <div *ngIf="myReactiveForm.controls.lastName.errors?.['required']">
+      Last Name is required
+    </div>
+    <div *ngIf="myReactiveForm.controls.lastName.errors?.['minlength']">
+      Last name should be atleast 5 characters long
+    </div>
+
+  </div>
+
+  <br><br>
+
+  <div formGroupName="address">
+    <h3>Address:</h3>
+
+    <input type="text" name="city" placeholder="Enter street" formControlName="street">
+    <div *ngIf="myReactiveForm.controls.address.controls.street.invalid && 
+    (myReactiveForm.controls.address.controls.street.dirty || myReactiveForm.controls.address.controls.street.touched)">
+
+    <div *ngIf="myReactiveForm.controls.address.controls.street.errors?.['required']">
+      Street is required
+    </div>
+    <div *ngIf="myReactiveForm.controls.address.controls.street.errors?.['minlength']">
+      Street should be atleast 5 characters long
+    </div>
+
+    </div>
+
+    <br><br>
+    <input type="text" name="city" placeholder="Enter city" formControlName="city">
+    <div *ngIf="myReactiveForm.controls.address.controls.city.invalid && 
+    (myReactiveForm.controls.address.controls.city.dirty || myReactiveForm.controls.address.controls.city.touched)">
+
+    <div *ngIf="myReactiveForm.controls.address.controls.city.errors?.['required']">
+      City is required
+    </div>
+    <div *ngIf="myReactiveForm.controls.address.controls.city.errors?.['minlength']">
+      City should be atleast 5 characters long
+    </div>
+    <div *ngIf="myReactiveForm.controls.address.controls.city.errors?.['pattern']">
+      City should only contain alphabets
+    </div>
+
+    </div>
+
+  </div>
+
+  <br><br>
+  <button (click)="updateProfile()">Update</button>
+  <button [disabled]="!myReactiveForm.valid">Submit</button>
+
+</form>
