@@ -1,0 +1,11 @@
+<h2>Angular Pipes</h2>
+
+<p>Name in lowercase: {{name | lowercase }}</p>
+<p>Name in uppercase: {{name | uppercase}}</p>
+<p>Title case: {{title | titlecase}}</p> <!-- Convers first letter of string to uppercase -->
+<p>Salary in rupees: {{salary | currency: 'INR'}}</p>
+<p>Salary in USD: {{salary | currency: 'USD'}}</p>
+<p>Salary in EURO: {{salary | currency: 'EUR'}}</p>
+<p>JSON Data: {{jsonData | json }}</p>
+<p>Today's Date: {{today_date | date: 'short'}}</p> <!-- Display's date in short format -->
+<p>Slicing: {{sliceData | slice: 2}}</p>
