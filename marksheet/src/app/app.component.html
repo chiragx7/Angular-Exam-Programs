@@ -1,0 +1,25 @@
+<h2 align="center">Student Marksheet</h2>
+<table align="center">
+  <thead>
+    <tr>
+      <th>Roll No.</th>
+      <th>Name</th>
+      <th>Android</th>
+      <th>Angular</th>
+      <th>DSA</th>
+      <th>Total</th>
+      <th>Percentage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of student_details">
+      <td>{{student.rollno}}</td>
+      <td>{{student.name}}</td>
+      <td>{{student.android}}</td>
+      <td>{{student.angular}}</td>
+      <td>{{student.dsa}}</td>
+      <td>{{ (student.android+student.angular+student.dsa) }}</td>
+      <td>{{ (student.android+student.angular+student.dsa) / 3 }}</td>
+    </tr>
+  </tbody>
+</table>
